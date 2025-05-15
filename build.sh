@@ -21,7 +21,7 @@ echo "Uncompress vocabulary ..."
 
 cd Vocabulary
 tar -xf ORBvoc.txt.tar.gz
-tar -xf FBvoc.zip
+tar -xf FBvoc.txt.tar.gz
 cd ..
 
 echo "Configuring and building ORB_SLAM2 ..."
