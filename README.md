@@ -1,6 +1,6 @@
 # ORB-SLAM2 + FeatureBooster
 
-This project is an example of integrating **FeatureBooster** (CVPR 2023) with **ORB-SLAM2**. In addition to the model provided by FeatureBooster, we have also performed model quantization to further reduce the memory footprint and inference time, making it more efficient for real-time applications.
+This project is an example of integrating **FeatureBooster** (CVPR 2023) with **ORB-SLAM2**. In addition to the model provided by FeatureBooster, we have also performed model quantization to further reduce the memory usage and inference time, making it more efficient for real-time applications.
 
 ## Overview
 
