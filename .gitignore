@@ -27,3 +27,6 @@ Vocabulary/FBvoc.txt
 build/
 *~
 lib/
+
+model/feature_booster_fp32.engine
+model/feature_booster_fp16.engine
