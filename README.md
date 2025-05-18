@@ -25,11 +25,14 @@ This project is an example of integrating **ORB-SLAM2** with **FeatureBooster** 
   cd ORB-SLAM2-FeatureBooster
   ```
 
-2. generate .engine
+2. generate .engine (You must recompile this on the device where it will be executed !)
+
   ```
   cd model
   ```
+
     - .onnx -> .engine (fp32)
+
     ```
     trtexec \
     --onnx=feature_booster_explicit.onnx \
@@ -40,7 +43,9 @@ This project is an example of integrating **ORB-SLAM2** with **FeatureBooster** 
     --optShapes=descriptors:1x1000x256,keypoints:1x1000x4 \
     --maxShapes=descriptors:1x2200x256,keypoints:1x2200x4
     ```
+
     - .onnx -> .engine (fp16)
+
     ```
     trtexec \
     --onnx=feature_booster_explicit.onnx \
@@ -59,7 +64,7 @@ This project is an example of integrating **ORB-SLAM2** with **FeatureBooster** 
 
 3. modify model path in system.cc (Line:70)
 ```
-std::string enginePath = "path to your own .engine"; 
+std::string enginePath = "path_to_your.engine"; 
 ```
 
 4. build
