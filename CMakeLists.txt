@@ -10,6 +10,7 @@ MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
 
+
 # Check C++11 or C++0x support
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++14" COMPILER_SUPPORTS_CXX14)
@@ -36,12 +37,19 @@ if(NOT OpenCV_FOUND)
    endif()
 endif()
 
-## ONNX V1.18.0 -> depend on your cuda and cudnn version
-set(ORT_DIR /home/wei/onnxruntime)
-link_directories(${ORT_DIR}/lib)
+## TensorRT
+link_directories(/usr/local/cuda/lib64)
+link_directories(/usr/lib/x86_64-linux-gnu)
+find_package(CUDA REQUIRED)
+include_directories(/usr/include/x86_64-linux-gnu)
+include_directories(/usr/local/cuda/include)
+include_directories(/usr/include)
+
+link_directories(/usr/lib/x86_64-linux-gnu)
 
 find_package(Eigen3 3.1.0 REQUIRED)
 find_package(Pangolin REQUIRED)
+
 
 include_directories(
 ${PROJECT_SOURCE_DIR}
@@ -83,6 +91,9 @@ ${Pangolin_LIBRARIES}
 ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
 ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
 onnxruntime
+nvinfer
+nvonnxparser
+cudart
 )
 
 # Build examples
@@ -117,4 +128,3 @@ target_link_libraries(mono_kitti ${PROJECT_NAME})
 add_executable(mono_euroc
 Examples/Monocular/mono_euroc.cc)
 target_link_libraries(mono_euroc ${PROJECT_NAME})
-

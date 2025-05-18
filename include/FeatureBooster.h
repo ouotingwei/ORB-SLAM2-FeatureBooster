@@ -1,28 +1,37 @@
-#include "onnxruntime_cxx_api.h"
-#include <opencv2/core.hpp>
-#include <bitset>
-#include <mutex>
-#include <iostream>
+#ifndef FEATUREBOOSTER_H
+#define FEATUREBOOSTER_H
 
-namespace ORB_SLAM2
-{
-    
-class FeatureBooster
-{
+#include <NvInfer.h>
+#include <cuda_runtime_api.h>
+#include <opencv2/opencv.hpp>
+#include <vector>
+#include <mutex>
+#include <string>
+
+namespace ORB_SLAM2 {
+
+class FeatureBooster {
 public:
-    FeatureBooster(int img_w, int img_h);
-    bool LoadOnnxModel(const std::string &model_path);
-    void BoostDescriptors(std::vector<cv::KeyPoint> &kps, cv::Mat &Desc);
+    FeatureBooster(int w, int h, const std::string& engine_path);
+    ~FeatureBooster();
+    bool LoadEngine(const std::string& engine_path);
+    void BoostDescriptors(std::vector<cv::KeyPoint>& kps, cv::Mat& Desc);
 
 private:
     int img_w, img_h;
-
+    nvinfer1::IRuntime* runtime{nullptr};
+    nvinfer1::ICudaEngine* engine{nullptr};
+    nvinfer1::IExecutionContext* context{nullptr};
+    cudaStream_t stream{0};
+    void* desc_dev{nullptr};
+    void* kp_dev{nullptr};
+    void* out_dev{nullptr};
     std::mutex mutex_inference;
-
-    Ort::Env env;
-    Ort::SessionOptions session_options;
-    std::unique_ptr<Ort::Session> session;
-    Ort::AllocatorWithDefaultOptions allocator;
+    static constexpr const char* DESC_NAME = "descriptors";
+    static constexpr const char* KP_NAME   = "keypoints";
+    static constexpr const char* OUT_NAME  = "boosted_descriptors";
 };
 
 }
+
+#endif

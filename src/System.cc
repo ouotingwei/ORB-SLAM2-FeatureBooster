@@ -67,14 +67,15 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     else if(mSensor==RGBD)
         cout << "RGB-D" << endl;
 
-    
-    mpFeatureBooster = new FeatureBooster(720, 540);
-    bool success = mpFeatureBooster->LoadOnnxModel("/home/wei/orb_slam2_booster/src/ORB_SLAM2_NOETIC/model/feature_booster.onnx");
-    std::cout << "Load model result: " << (success ? "success" : "fail") << std::endl;
-    if(!success) {
-        delete mpFeatureBooster;
-        mpFeatureBooster = nullptr;
+    std::string enginePath = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp16.engine"; 
+    // std::string enginePath = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp32.engine"; 
+    mpFeatureBooster = new ORB_SLAM2::FeatureBooster(752,480,enginePath);
+    bool success = mpFeatureBooster->LoadEngine(enginePath);
+    if(!success){
+        std::cerr<<"Engine load failed\n";
+        exit(-1);
     }
+
 
     //Check settings file
     cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::READ);
