@@ -31,36 +31,36 @@ This project is an example of integrating **ORB-SLAM2** with **FeatureBooster** 
   cd model
   ```
 
-    - .onnx -> .engine (fp32)
+- .onnx -> .engine (fp32)
 
-    ```
-    trtexec \
-    --onnx=feature_booster_explicit.onnx \
-    --saveEngine=feature_booster_fp32.engine \
-    --memPoolSize=workspace:4096 \
-    --profile=0 \
-    --minShapes=descriptors:1x1x256,keypoints:1x1x4 \
-    --optShapes=descriptors:1x1000x256,keypoints:1x1000x4 \
-    --maxShapes=descriptors:1x2200x256,keypoints:1x2200x4
-    ```
+```
+trtexec \
+--onnx=feature_booster_explicit.onnx \
+--saveEngine=feature_booster_fp32.engine \
+--memPoolSize=workspace:4096 \
+--profile=0 \
+--minShapes=descriptors:1x1x256,keypoints:1x1x4 \
+--optShapes=descriptors:1x1000x256,keypoints:1x1000x4 \
+--maxShapes=descriptors:1x2200x256,keypoints:1x2200x4
+```
 
-    - .onnx -> .engine (fp16)
+- .onnx -> .engine (fp16)
 
-    ```
-    trtexec \
-    --onnx=feature_booster_explicit.onnx \
-    --saveEngine=feature_booster_fp16.engine \
-    --fp16 \
-    --memPoolSize=workspace:4096 \
-    --profile=0 \
-    --minShapes=descriptors:1x1x256,keypoints:1x1x4 \
-    --optShapes=descriptors:1x1000x256,keypoints:1x1000x4 \
-    --maxShapes=descriptors:1x2200x256,keypoints:1x2200x4
-    ```
+```
+trtexec \
+--onnx=feature_booster_explicit.onnx \
+--saveEngine=feature_booster_fp16.engine \
+--fp16 \
+--memPoolSize=workspace:4096 \
+--profile=0 \
+--minShapes=descriptors:1x1x256,keypoints:1x1x4 \
+--optShapes=descriptors:1x1000x256,keypoints:1x1000x4 \
+--maxShapes=descriptors:1x2200x256,keypoints:1x2200x4
+```
 
-    - .onnx -> .engine (int8)
-    ```
-    ```
+- .onnx -> .engine (int8)
+```
+```
 
 3. modify model path in system.cc (Line:70)
 ```
