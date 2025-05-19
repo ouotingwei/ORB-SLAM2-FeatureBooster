@@ -4,7 +4,14 @@ This project is an example of integrating **[ORB-SLAM2](https://github.com/raulm
 
 ## Performance
 
-- Inference Time
+- Inference Time (ms)
+
+|                          | #500 | #1000 | #2000 | #4000 | #8000 |
+|--------------------------|------|-------|-------|-----------|-----------|
+| FeatureBooster (from paper)<br>RTX 3090 | 1.6  | 2.0   | 3.2   | **4.3**   | **7.8**   |
+| TensorRT-FP32<br>RTX 2050 mobile       | 1.75 | 2.29  | 4.37  | 9.07      | 20.03     |
+| TensorRT-FP16<br>RTX 2050 mobile       | 1.0 | 1.46 | 2.54 | 4.80      | 9.65      |
+
 
 - EuRoC MAV Dataset
 
@@ -66,6 +73,7 @@ trtexec \
 
 - .onnx -> .engine (int8)
 ```
+...
 ```
 
 3. modify model path in system.cc (Line:70)
