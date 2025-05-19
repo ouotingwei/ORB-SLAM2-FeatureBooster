@@ -18,17 +18,24 @@ class Logger : public nvinfer1::ILogger {
 FeatureBooster::FeatureBooster(int w, int h, const std::string& engine_path)
     : img_w(w), img_h(h)
 {
-    // std::cerr << "[DEBUG] Constructor: runtime creating..." << std::endl;
+    cudaError_t err = cudaSetDevice(0);
+    if (err != cudaSuccess) {
+        std::cerr << "[FeatureBooster] cudaSetDevice failed: " << cudaGetErrorString(err) << std::endl;
+        std::exit(EXIT_FAILURE);
+    }
+    cudaFree(0);
+
+    std::cerr << "[DEBUG] Constructor: runtime creating..." << std::endl;
     runtime = nvinfer1::createInferRuntime(logger);
-    // std::cerr << "[DEBUG] Constructor: calling LoadEngine()" << std::endl;
+    std::cerr << "[DEBUG] Constructor: calling LoadEngine()" << std::endl;
     bool ok = LoadEngine(engine_path);
-    // std::cerr << "[DEBUG] Constructor: LoadEngine returned " << ok << std::endl;
+    std::cerr << "[DEBUG] Constructor: LoadEngine returned " << ok << std::endl;
     cudaStreamCreate(&stream);
 }
 
 FeatureBooster::~FeatureBooster()
 {
-    // std::cerr << "[DEBUG] Destructor: destroying stream and freeing resources" << std::endl;
+    std::cerr << "[DEBUG] Destructor: destroying stream and freeing resources" << std::endl;
     cudaStreamDestroy(stream);
     delete context;
     delete engine;

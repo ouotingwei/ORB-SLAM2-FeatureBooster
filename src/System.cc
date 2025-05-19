@@ -67,8 +67,7 @@ System::System(const string &strVocFile, const string &strSettingsFile, const eS
     else if(mSensor==RGBD)
         cout << "RGB-D" << endl;
 
-    std::string enginePath = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp16.engine"; 
-    // std::string enginePath = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp32.engine"; 
+    std::string enginePath = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp32.engine";  
     mpFeatureBooster = new ORB_SLAM2::FeatureBooster(752,480,enginePath);
     bool success = mpFeatureBooster->LoadEngine(enginePath);
     if(!success){
