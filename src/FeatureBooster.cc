@@ -1,4 +1,3 @@
-// FeatureBooster.cpp（已加入 DEBUG 訊息）
 #include "FeatureBooster.h"
 #include <NvInfer.h>
 #include <iostream>
