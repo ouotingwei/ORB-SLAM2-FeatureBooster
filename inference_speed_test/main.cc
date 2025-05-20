@@ -15,7 +15,7 @@ size_t GetFileSize(const std::string& path) {
 }
 
 int main() {
-    std::string engine_path = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_int8.engine";
+    std::string engine_path = "/home/wei/orb_slam2_booster/src/ORB-SLAM2-FeatureBooster/model/feature_booster_fp32.engine";
     int img_w = 640, img_h = 480;
 
     FeatureBooster booster(img_w, img_h, engine_path);
