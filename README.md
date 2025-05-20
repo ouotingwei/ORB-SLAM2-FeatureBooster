@@ -15,7 +15,7 @@ This project is an example of integrating **[ORB-SLAM2](https://github.com/raulm
 
 - Model Size
 
-| Platform         | Model Size (KB) | Gpu Usage
+| Platform         | Model Size (KB) | 
 |------------------|-----------------|
 | TensorRT-FP32 (RTX 2050 mobile) | 11476.04 |
 | TensorRT-FP16 (RTX 2050 mobile) | 6474.66  |
