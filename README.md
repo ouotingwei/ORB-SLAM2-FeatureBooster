@@ -14,6 +14,7 @@ This project is an example of integrating **[ORB-SLAM2](https://github.com/raulm
 | TensorRT-INT8<br>RTX 2050 mobile       | 0.91 | 1.83 | 3.64 | 7.09      | 14.29      |
 
 - Model Size
+
 | Platform         | Model Size (KB) |
 |------------------|-----------------|
 | TensorRT-FP32 (RTX 2050 mobile) | 11476.04 |
