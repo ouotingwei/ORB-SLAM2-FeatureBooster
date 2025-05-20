@@ -14,11 +14,11 @@ This project is an example of integrating **[ORB-SLAM2](https://github.com/raulm
 | TensorRT-INT8<br>RTX 2050 mobile       | 0.91 | 1.83 | 3.64 | 7.09      | 14.29      |
 
 - Model Size
-|                          | Model Size (KB) | 
-|--------------------------|------|
-| TensorRT-FP32<br>RTX 2050 mobile       | 11476.04 |
-| TensorRT-FP16<br>RTX 2050 mobile       | 6474.66  |
-| TensorRT-INT8<br>RTX 2050 mobile       | 4975.55  |
+|                                 | Model Size (KB) | 
+|---------------------------------|-----------------|
+| TensorRT-FP32<br>RTX 2050 mobile|        11476.04 |
+| TensorRT-FP16<br>RTX 2050 mobile|        6474.66  |
+| TensorRT-INT8<br>RTX 2050 mobile|        4975.55  |
 
 - EuRoC MAV Dataset
 
