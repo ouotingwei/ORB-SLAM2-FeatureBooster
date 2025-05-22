@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 
     ros::NodeHandle nodeHandler;
 
-    ros::Subscriber sub = nodeHandler.subscribe("/camera/image_raw", 1, &ImageGrabber::GrabImage,&igb);    
+    ros::Subscriber sub = nodeHandler.subscribe("/usb_cam/image_raw", 1, &ImageGrabber::GrabImage,&igb);    
     ros::Publisher trackin_pub = nodeHandler.advertise<sensor_msgs::Range>("SLAM_TS", 1000);    
     // ros::Publisher camera_pose_pub = nodeHandler.advertise<geometry_msgs::PoseStamped>("SLAMCameraPose", 1000); 
 
