@@ -100,8 +100,8 @@ This project is an example of integrating **[ORB-SLAM2](https://github.com/raulm
   ```
 
 - .onnx -> .engine (int8)
-  - Prepare --calib dataset 
-    We used the TUM Dataset as the calibration data. The processed files can be found [here](https://drive.google.com/drive/folders/1C2pQvxcR4ypZwPGVMSnresDPgdd432p8?usp=drive_link).
+  - Prepare calib dataset 
+    - We used the TUM Dataset as the calibration data. The processed files can be found [here](https://drive.google.com/drive/folders/1C2pQvxcR4ypZwPGVMSnresDPgdd432p8?usp=drive_link).
     ```
     cd /int8_quantization
     python3 int8_quant.py
