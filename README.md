@@ -2,8 +2,7 @@
 
 This project is an example of integrating **[ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2.git)** with **[FeatureBooster](https://github.com/SJTU-ViSYS/FeatureBooster)** (CVPR 2023). In addition to the model provided by FeatureBooster, we have also performed model quantization to further reduce the memory usage and inference time, making it more efficient on edge GPU for real-time applications.
 
-[![Watch the video](https://img.youtube.com/vi/<GHhYdiVRHz4&t=2s>/0.jpg)](https://www.youtube.com/watch?v=<GHhYdiVRHz4&t=2s>)
-
+[![Watch the video](https://img.youtube.com/vi/GHhYdiVRHz4/0.jpg)](https://www.youtube.com/watch?v=GHhYdiVRHz4&t=2s)
 
 ## Performance
 - MMA curves in HPatches
